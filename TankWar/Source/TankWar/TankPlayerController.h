@@ -17,5 +17,12 @@ class TANKWAR_API ATankPlayerController : public APlayerController
 public:
 	ATank* GetControlledTank() const;
 	
-	void BeginPlay() override;
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
+
+private:
+	// Start the tank moving the barrel so that a shot
+	// would hit where the world is
+	void AimTowardsCrossHair();
+	bool GetSightRayHitLocation(FVector& HitLocation);
 };
